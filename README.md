@@ -9,17 +9,11 @@ Project bio
 
 ## Resources 🔗
 
-API:
-
-- [Link to your chosen API](https://pokeapi.co/)
 
 Design Plans:
 
-- [Link to your Figma Designs](https://www.figma.com/)
+- https://www.figma.com/design/88yAw7TIuMgylEKMtCu6lR/Web-1-Section-1---Fall-2025?node-id=0-1&t=sTNgAcQ4EGMZJ4TO-1
 
-Additional Resources:
-
-- Provide a list of resources with their links
 
 ## Database Schema 🗄️ (if applicable)
 
