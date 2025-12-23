@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Selection</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Add styles -->
+    <script type="module" defer src="profile-selection.js"></script>
+  </head>
+  <body>
+    <!-- Modal Overlay Look -->
+    <div id="profile-selection-modal" class="modal-overlay">
+        <div class="profile-selection-container">
+            <!-- Card 1: User 1 (Pre-setup Account) -->
+            <div class="profile-card" data-profile-id="user-1">
+                <div class="profile-image-container">
+                    <img id="user1-profile-img" class="profile-image" src="" alt="User 1 Profile">
+                    <span class="profile-img-placeholder">profile img</span>
+                </div>
+                <h2 class="profile-username" id="user1-username">user 1</h2>
+            </div>
+            
+            <!-- Card 2: User 2 (Pre-setup Account) -->
+            <div class="profile-card" data-profile-id="user-2">
+                <div class="profile-image-container">
+                    <img id="user2-profile-img" class="profile-image" src="" alt="User 2 Profile">
+                    <span class="profile-img-placeholder">profile img</span>
+                </div>
+                <h2 class="profile-username" id="user2-username">user 2</h2>
+            </div>
+            
+  </body>
+</html>
