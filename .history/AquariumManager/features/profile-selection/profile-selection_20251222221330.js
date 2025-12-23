@@ -13,14 +13,3 @@ function InitializeProfiles() {
     $('.profile-card[data-profile-id="user-2"] .profile-img').hide();
   }
 }
-
-// Dont know how to do this with jQuery
-function saveProfileToLocalStorage(profile) {
-    try {
-        localStorage.setItem('selectedProfile', JSON.stringify(profile));
-        console.log('Profile saved to localStorage:', profile.id);
-    } catch (error) {
-        console.error('Error saving profile to localStorage:', error);
-        alert('Error saving profile. Please try again.');
-    }
-}
