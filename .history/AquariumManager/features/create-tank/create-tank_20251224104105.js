@@ -77,13 +77,6 @@ function setupEventHandlers() {
       hideSuggestions();
     }
   });
-
-  $(document).on("click", ".suggestion-item", function () {
-    const fishData = $(this).data("fish-data");
-    addFishToTank(fishData);
-    $("#fish-search").val("");
-    hideSuggestions();
-  });
 }
 
 function handleTankImageUpload(file) {
@@ -234,48 +227,4 @@ function createSuggestionItem(fish) {
     `);
 
   return $item;
-}
-
-function displaySelectedFish() {
-  const $container = $("#selected-fish-container");
-  $container.empty();
-
-  if (!window.selectedFish || window.selectedFish.length === 0) {
-    $container.html('<p class="empty-message">No fish added yet</p>');
-    return;
-  }
-
-  window.selectedFish.forEach(function (fish) {
-    const $fishItem = createFishListItem(fish);
-    $container.append($fishItem);
-  });
-}
-
-function addFishToTank(fish) {
-  if (!window.selectedFish) {
-    window.selectedFish = [];
-  }
-
-  // Check if fish is already added
-  const fishId = fish.FishID || fish.id;
-  const existingIndex = window.selectedFish.findIndex(
-    (f) => (f.fishId || f.id) == fishId
-  );
-
-  if (existingIndex >= 0) {
-    // if fish already exists, it increments quantity
-    window.selectedFish[existingIndex].quantity =
-      (window.selectedFish[existingIndex].quantity || 1) + 1;
-  } else {
-    // Add new fish with quantity 1
-    window.selectedFish.push({
-      fishId: fishId,
-      id: fishId,
-      name: fish.CommonName || fish.name,
-      quantity: 1,
-      ...fish,
-    });
-  }
-
-  displaySelectedFish();
 }
