@@ -1,8 +1,6 @@
 import { searchFish, getAllFish } from "../../services/fish-api.js";
 
-$(document).ready(function () {
-  initializePage();
-});
+$(document).ready(function () {});
 
 function initializePage() {
   const profile = getSelectedProfile();
@@ -15,9 +13,6 @@ function initializePage() {
   if (!window.selectedFish) {
     window.selectedFish = [];
   }
-
-  // Preloads the fish so its faster
-  preloadAllFish();
 }
 
 function getSelectedProfile() {
@@ -28,16 +23,4 @@ function getSelectedProfile() {
     console.error("Error loading profile:", error);
     return null;
   }
-}
-
-function preloadAllFish() {
-  getAllFish()
-    .then((fish) => {
-      window.allFishCache = fish;
-      console.log("Preloaded", fish.length, "fish for fast search");
-    })
-    .catch((error) => {
-      console.error("Error preloading fish:", error);
-      // Continues without cache meaning it will use API search
-    });
 }

@@ -15,9 +15,6 @@ function initializePage() {
   if (!window.selectedFish) {
     window.selectedFish = [];
   }
-
-  // Preloads the fish so its faster
-  preloadAllFish();
 }
 
 function getSelectedProfile() {
