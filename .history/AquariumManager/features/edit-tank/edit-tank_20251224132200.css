@@ -1,0 +1,331 @@
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ===============================
+   PAGE BACKGROUND
+================================ */
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 15% 85%, #ffb347 0%, transparent 40%),
+    radial-gradient(circle at 85% 90%, #35f0ff 0%, transparent 45%), #0b0f3b;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* ===============================
+   MAIN CONTAINER
+================================ */
+.edit-tank-container {
+  padding: 2.5rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===============================
+   GLASS CARD BASE
+================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+/* ===============================
+   MAIN CARD
+================================ */
+.edit-tank-card {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2.5rem;
+  border-radius: 28px;
+}
+
+/* ===============================
+   PAGE TITLE
+================================ */
+.page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: lowercase;
+}
+
+/* ===============================
+   FORM LAYOUT
+================================ */
+.tank-form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+}
+
+/* ===============================
+   LEFT PANEL
+================================ */
+.tank-details-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================
+   IMAGE UPLOAD
+================================ */
+.tank-image-section {
+  margin-bottom: 2rem;
+}
+
+.tank-image-upload-label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tank-image-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.tank-image-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.upload-icon {
+  font-size: 2rem;
+}
+
+.upload-text {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+/* ===============================
+   FORM FIELDS
+================================ */
+.tank-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field-label {
+  width: 110px;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  text-transform: lowercase;
+}
+
+.input {
+  flex: 1;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  outline: none;
+  font-size: 0.8rem;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.btn {
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #35f0ff, #6c7cff);
+  color: #0b0f3b;
+  font-weight: 600;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* ===============================
+   RIGHT PANEL (FISH)
+================================ */
+.fish-selection-panel {
+  padding: 1.8rem;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================
+   PANEL TITLE
+================================ */
+.panel-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* ===============================
+   SEARCH BAR
+================================ */
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+}
+
+/* ===============================
+   SEARCH SUGGESTIONS
+================================ */
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(20, 25, 80, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  margin-top: 0.3rem;
+  z-index: 10;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.suggestions-list {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 0.7rem 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.suggestion-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.suggestion-details {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.suggestion-add-icon {
+  font-size: 1.2rem;
+}
+
+/* ===============================
+   CURRENT FISH LIST
+================================ */
+.current-fish-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+.empty-message {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+/* ===============================
+   FISH ITEM
+================================ */
+.current-fish-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.fish-item-info {
+  flex: 1;
+}
+
+.fish-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+/* ===============================
+   QUANTITY CONTROLS
+================================ */
+.fish-quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.quantity-display {
+  font-size: 0.8rem;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ===============================
+   DELETE BUTTON
+================================ */
+.btn-danger {
+  background: #ff4b4b;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #ff2f2f;
+}
