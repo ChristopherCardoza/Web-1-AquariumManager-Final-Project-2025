@@ -42,12 +42,7 @@ function preloadAllFish() {
     });
 }
 
-function setupEventHandlers() {
-  // Tank image upload
-  $("#tank-image-upload").on("change", function (e) {
-    handleTankImageUpload(e.target.files[0]);
-  });
-}
+function setupEventHandlers() {}
 
 function handleTankImageUpload(file) {
   if (!file) {

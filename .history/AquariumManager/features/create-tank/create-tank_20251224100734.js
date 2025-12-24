@@ -43,10 +43,12 @@ function preloadAllFish() {
 }
 
 function setupEventHandlers() {
-  // Tank image upload
-  $("#tank-image-upload").on("change", function (e) {
-    handleTankImageUpload(e.target.files[0]);
-  });
+    // Tank image upload
+    $('#tank-image-upload').on('change', function(e) {
+        handleTankImageUpload(e.target.files[0]);
+    });
+
+    
 }
 
 function handleTankImageUpload(file) {
