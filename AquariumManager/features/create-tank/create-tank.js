@@ -2,6 +2,8 @@ import { searchFish, getAllFish } from "../../services/fish-api.js";
 
 $(document).ready(function () {
   initializePage();
+  setupEventHandlers();
+  window.searchDebounceTimer = null;
 });
 
 function initializePage() {
@@ -47,6 +49,34 @@ function setupEventHandlers() {
   $("#tank-image-upload").on("change", function (e) {
     handleTankImageUpload(e.target.files[0]);
   });
+
+  // fish search with debounce timer to limit the input event
+  $("#fish-search").on("input", function () {
+    const query = $(this).val().trim();
+
+    // Clear previous timer
+    if (window.searchDebounceTimer) {
+      clearTimeout(window.searchDebounceTimer);
+    }
+
+    // Hide suggestions if query is empty
+    if (query.length === 0) {
+      hideSuggestions();
+      return;
+    }
+
+    // Debounce search - wait 300ms after user stops typing
+    window.searchDebounceTimer = setTimeout(function () {
+      performFishSearch(query);
+    }, 300);
+  });
+
+  // Hide suggestions when clicking outside
+  $(document).on("click", function (e) {
+    if (!$(e.target).closest(".search-container").length) {
+      hideSuggestions();
+    }
+  });
 }
 
 function handleTankImageUpload(file) {
@@ -80,4 +110,121 @@ function handleTankImageUpload(file) {
   };
 
   reader.readAsDataURL(file);
+}
+
+function hideSuggestions() {
+  $("#fish-search-suggestions").hide();
+}
+
+function showSuggestionsLoading() {
+  const $suggestionsList = $("#suggestions-list");
+  $suggestionsList.html(
+    '<div class="suggestion-item loading">Searching...</div>'
+  );
+  $("#fish-search-suggestions").show();
+}
+
+function performFishSearch(query) {
+  if (query.length < 1) {
+    hideSuggestions();
+    return;
+  }
+
+  // Show loading state
+  showSuggestionsLoading();
+
+  if (window.allFishCache && window.allFishCache.length > 0) {
+    const results = filterFishClientSide(query, window.allFishCache);
+    displaySuggestions(results);
+    return;
+  }
+
+  // if no cache it will use API search
+  searchFish(query)
+    .then((results) => {
+      displaySuggestions(results);
+    })
+    .catch((error) => {
+      console.error("Error searching fish:", error);
+      showSuggestionsError();
+    });
+}
+
+function filterFishClientSide(query, fishArray) {
+  const lowerQuery = query.toLowerCase();
+  return fishArray.filter((fish) => {
+    const commonName = (fish.CommonName || "").toLowerCase();
+    const scientificName = (fish.ScientificName || "").toLowerCase();
+    return (
+      commonName.includes(lowerQuery) || scientificName.includes(lowerQuery)
+    );
+  });
+}
+
+function displaySuggestions(results) {
+  const $suggestionsList = $("#suggestions-list");
+  $suggestionsList.empty();
+
+  if (!results || results.length === 0) {
+    $suggestionsList.html(
+      '<div class="suggestion-item no-results">No fish found</div>'
+    );
+    $("#fish-search-suggestions").show();
+    return;
+  }
+
+  // Show at least 3 results, or all if less than 3
+  const maxResults = Math.max(3, results.length);
+  const displayResults = results.slice(0, maxResults);
+
+  displayResults.forEach(function (fish) {
+    const $suggestionItem = createSuggestionItem(fish);
+    $suggestionsList.append($suggestionItem);
+  });
+
+  $("#fish-search-suggestions").show();
+}
+
+function showSuggestionsError() {
+  const $suggestionsList = $("#suggestions-list");
+  $suggestionsList.html(
+    '<div class="suggestion-item error">Error loading fish. Please try again.</div>'
+  );
+  $("#fish-search-suggestions").show();
+}
+
+function createSuggestionItem(fish) {
+  const $item = $("<div>").addClass("suggestion-item").data("fish-data", fish);
+
+  // priority order
+  const commonName = fish.CommonName || fish.name || "Unknown Fish";
+  const scientificName = fish.ScientificName || fish.species || "";
+  const careLevel = fish.CareLevel || fish.careLevel || "";
+  const minTankSize = fish.MinTankSizeGal || fish.minTankSize || "";
+
+  $item.html(`
+        <div class="suggestion-content">
+            <div class="suggestion-name">${commonName}</div>
+            <div class="suggestion-details">
+                ${
+                  scientificName
+                    ? `<span class="scientific-name">${scientificName}</span>`
+                    : ""
+                }
+                ${
+                  careLevel
+                    ? `<span class="care-level">${careLevel}</span>`
+                    : ""
+                }
+                ${
+                  minTankSize
+                    ? `<span class="tank-size">Min: ${minTankSize} gal</span>`
+                    : ""
+                }
+            </div>
+        </div>
+        <div class="suggestion-add-icon">+</div>
+    `);
+
+  return $item;
 }
