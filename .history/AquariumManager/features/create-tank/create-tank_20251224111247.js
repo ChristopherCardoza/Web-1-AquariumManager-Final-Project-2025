@@ -84,11 +84,6 @@ function setupEventHandlers() {
     $("#fish-search").val("");
     hideSuggestions();
   });
-
-  $(document).on("click", ".remove-fish-btn", function () {
-    const fishId = $(this).closest(".selected-fish-item").data("fish-id");
-    removeFish(fishId);
-  });
 }
 
 function handleTankImageUpload(file) {
@@ -281,39 +276,6 @@ function addFishToTank(fish) {
       ...fish,
     });
   }
-
-  displaySelectedFish();
-}
-
-function createFishListItem(fish) {
-  const $item = $("<div>")
-    .addClass("selected-fish-item")
-    .attr("data-fish-id", fish.fishId || fish.id);
-
-  const fishName = fish.name || fish.CommonName || "Unknown Fish";
-  const quantity = fish.quantity || 1;
-
-  $item.html(`
-        <div class="fish-item-info">
-            <span class="fish-name">${fishName}</span>
-            <span class="fish-quantity">Qty: ${quantity}</span>
-        </div>
-        <button class="remove-fish-btn btn-danger" aria-label="Remove fish">
-            <span class="trash-icon">🗑️</span>
-        </button>
-    `);
-
-  return $item;
-}
-
-function removeFish(fishId) {
-  if (!window.selectedFish) {
-    return;
-  }
-
-  window.selectedFish = window.selectedFish.filter(function (fish) {
-    return (fish.fishId || fish.id) != fishId;
-  });
 
   displaySelectedFish();
 }
