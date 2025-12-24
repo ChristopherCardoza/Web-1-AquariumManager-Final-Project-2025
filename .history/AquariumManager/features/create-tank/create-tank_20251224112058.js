@@ -90,13 +90,7 @@ function setupEventHandlers() {
     removeFish(fishId);
   });
 
-  $(document).on("click", "#save-btn", function () {
-    saveTank();
-  });
-
-  $(document).on("click", "#exit-btn", function () {
-    exitWithoutSaving();
-  });
+  
 }
 
 function handleTankImageUpload(file) {
@@ -324,87 +318,4 @@ function removeFish(fishId) {
   });
 
   displaySelectedFish();
-}
-
-function validateTankForm() {
-  const tankName = $("#tank-name").val().trim();
-  const tankSize = $("#tank-size").val();
-
-  if (!tankName || tankName.length === 0) {
-    alert("Please enter a tank name.");
-    return false;
-  }
-
-  if (!tankSize || parseFloat(tankSize) <= 0) {
-    alert("Please enter a valid tank size.");
-    return false;
-  }
-
-  return true;
-}
-
-function saveTank() {
-  // Validate form
-  if (!validateTankForm()) {
-    return;
-  }
-
-  try {
-    const profile = getSelectedProfile();
-    if (!profile) {
-      alert("No profile selected. Redirecting to profile selection.");
-      window.location.href = "../profile-selection/profile-selection.html";
-      return;
-    }
-
-    // Get form values
-    const tankName = $("#tank-name").val().trim();
-    const tankSize = parseFloat($("#tank-size").val()) || null;
-    const temperature = $("#tank-temperature").val()
-      ? parseFloat($("#tank-temperature").val())
-      : null;
-    const ph = $("#tank-ph").val() ? parseFloat($("#tank-ph").val()) : null;
-    const gh = $("#tank-gh").val() ? parseInt($("#tank-gh").val()) : null;
-    const tankImage = $("#tank-image-preview").attr("src") || null;
-
-    // Generate unique tank ID
-    const tankId = "tank-" + Date.now();
-
-    // Create tank object
-    const newTank = {
-      id: tankId,
-      name: tankName,
-      size: tankSize,
-      temperature: temperature,
-      ph: ph,
-      gh: gh,
-      image: tankImage,
-      fish: window.selectedFish || [],
-    };
-
-    // Add tank to profile's tanks array
-    if (!profile.tanks) {
-      profile.tanks = [];
-    }
-    profile.tanks.push(newTank);
-
-    // Save updated profile to localStorage
-    localStorage.setItem("selectedProfile", JSON.stringify(profile));
-
-    // Clear selected fish
-    window.selectedFish = [];
-
-    // Navigate back to tank manager
-    window.location.href = "../tank-manager/tank-manager.html";
-  } catch (error) {
-    console.error("Error saving tank:", error);
-    alert("Error saving tank. Please try again.");
-  }
-}
-
-function exitWithoutSaving() {
-  // Clear selected fish
-  window.selectedFish = [];
-
-  window.location.href = "../tank-manager/tank-manager.html";
 }
