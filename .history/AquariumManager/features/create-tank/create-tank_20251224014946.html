@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Tank</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="create-tank.css" type="text/css" />
+    <script type="module" defer src="create-tank.js"></script>
+  </head>
+  <body>
+    <div class="create-tank-container">
+      <div class="create-tank-card glass-card">
+        <h1 class="page-title">Create Tank</h1>
+
+        <div class="tank-form-layout">
+          <!-- Left Panel: Tank Details -->
+          <div class="tank-details-panel">
+            <!-- Tank Image Upload -->
+            <div class="tank-image-section">
+              <label for="tank-image-upload" class="tank-image-upload-label">
+                <img
+                  id="tank-image-preview"
+                  class="tank-image-preview"
+                  src=""
+                  alt="Tank Image"
+                  style="display: none"
+                />
+                <div class="tank-image-placeholder">
+                  <span class="upload-icon">+</span>
+                  <span class="upload-text">tank image</span>
+                </div>
+                <input
+                  type="file"
+                  id="tank-image-upload"
+                  name="tankImage"
+                  accept="image/*"
+                  style="display: none"
+                />
+              </label>
+            </div>
+
+            <!-- Tank Form Fields -->
+            <div class="tank-form-fields">
+              <div class="form-field">
+                <label for="tank-name" class="field-label">tank name:</label>
+                <input
+                  type="text"
+                  id="tank-name"
+                  class="input"
+                  placeholder="enter tank name"
+                  maxlength="100"
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="tank-size" class="field-label">size:</label>
+                <input
+                  type="number"
+                  id="tank-size"
+                  class="input"
+                  placeholder="gallons"
+                  min="1"
+                  step="0.1"
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="tank-temperature" class="field-label"
+                  >temperature:</label
+                >
+                <input
+                  type="number"
+                  id="tank-temperature"
+                  class="input"
+                  placeholder="°F"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="tank-ph" class="field-label">ph:</label>
+                <input
+                  type="number"
+                  id="tank-ph"
+                  class="input"
+                  placeholder="0-14"
+                  min="0"
+                  max="14"
+                  step="0.1"
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="tank-gh" class="field-label">gh:</label>
+                <input
+                  type="number"
+                  id="tank-gh"
+                  class="input"
+                  placeholder="ppm"
+                  min="0"
+                  step="1"
+                />
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <button id="exit-btn" class="btn btn-secondary">exit</button>
+              <button id="save-btn" class="btn btn-primary">save</button>
+            </div>
+          </div>
+
+          <!-- Right Panel: Fish Selection -->
+          <div class="fish-selection-panel glass-card">
+            <h2 class="panel-title">Fish</h2>
+
+            <!-- Search Bar with Suggestions Dropdown -->
+            <div class="search-container">
+              <input
+                type="text"
+                id="fish-search"
+                class="input search-input"
+                placeholder="search fish..."
+                autocomplete="off"
+              />
+              <!-- Search Suggestions Dropdown -->
+              <div
+                id="fish-search-suggestions"
+                class="search-suggestions"
+                style="display: none"
+              >
+                <div id="suggestions-list" class="suggestions-list">
+                  <!-- Suggestions will be dynamically inserted here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Selected Fish List -->
+            <div class="selected-fish-container" id="selected-fish-container">
+              <p class="empty-message">No fish added yet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
