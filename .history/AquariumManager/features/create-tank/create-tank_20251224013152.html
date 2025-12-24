@@ -123,26 +123,21 @@
           <div class="fish-selection-panel glass-card">
             <h2 class="panel-title">Fish</h2>
 
-            <!-- Search Bar with Suggestions Dropdown -->
+            <!-- Search Bar -->
             <div class="search-container">
               <input
                 type="text"
                 id="fish-search"
                 class="input search-input"
                 placeholder="search fish..."
-                autocomplete="off"
               />
-              <!-- Search Suggestions Dropdown -->
-              <div
-                id="fish-search-suggestions"
-                class="search-suggestions"
-                style="display: none"
-              >
-                <div id="suggestions-list" class="suggestions-list">
-                  <!-- Suggestions will be dynamically inserted here -->
-                </div>
-              </div>
             </div>
+
+            <!-- Add Fish Button -->
+            <button id="add-fish-btn" class="btn btn-primary add-fish-button">
+              <span class="add-icon">+</span>
+              <span>add fish</span>
+            </button>
 
             <!-- Selected Fish List -->
             <div class="selected-fish-container" id="selected-fish-container">
