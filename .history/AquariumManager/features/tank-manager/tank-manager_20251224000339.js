@@ -1,6 +1,4 @@
-$(document).ready(function () {
-  loadProfileData();
-});
+$(document).ready(function () {});
 
 function displayProfileHeader(profile) {
   // Set profile image
@@ -30,28 +28,4 @@ function displayTanks(tanks) {
     const $tankCard = createTankCard(tank);
     $container.append($tankCard);
   });
-}
-
-function loadProfileData() {
-  try {
-    const profileJson = localStorage.getItem("selectedProfile");
-
-    if (!profileJson) {
-      // No profile selected, redirect to profile selection
-      window.location.href = "../profile-selection/profile-selection.html";
-      return;
-    }
-
-    const profile = JSON.parse(profileJson);
-
-    // Display profile in header
-    displayProfileHeader(profile);
-
-    // Display tanks
-    displayTanks(profile.tanks || []);
-  } catch (error) {
-    console.error("Error loading profile data:", error);
-    alert("Error loading profile. Redirecting to profile selection.");
-    window.location.href = "../profile-selection/profile-selection.html";
-  }
 }
