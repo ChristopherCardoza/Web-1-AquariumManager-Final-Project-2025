@@ -1,16 +1,16 @@
 const user1 = {
   id: "user-1",
   username: "AqauriumLover123",
-  profilePic: "../../public/profile-user1.jpg",
+  profilePic: "", // add pic url here later
   tanks: [
     {
-      id: "tank-1-1",
+      id: "tank-1-1", // might add more tanks later
       name: "My lovely aquarium",
       size: 20,
       temperature: 80,
       ph: 7,
       gh: 6,
-      image: "../../public/tank-1-1.png",
+      image: "", // put the same tank pic here as what i had for figma
       fish: [
         {
           fishId: 1,
@@ -38,7 +38,7 @@ const user1 = {
 const user2 = {
   id: "user-2",
   username: "GuppyKeeper11",
-  profilePic: "../../public/profile-user2.jpg",
+  profilePic: "", // add pic url here later
   tanks: [
     {
       id: "tank-2-1",
@@ -47,7 +47,7 @@ const user2 = {
       temperature: 80,
       ph: 7.4,
       gh: 6,
-      image: "tank-2-1.jpg",
+      image: "", // put the same tank pic here as what i had for figma
       fish: [
         {
           fishId: 2,

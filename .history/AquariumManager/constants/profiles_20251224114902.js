@@ -10,7 +10,7 @@ const user1 = {
       temperature: 80,
       ph: 7,
       gh: 6,
-      image: "../../public/tank-1-1.png",
+      image: "", // put the same tank pic here as what i had for figma
       fish: [
         {
           fishId: 1,
@@ -47,7 +47,7 @@ const user2 = {
       temperature: 80,
       ph: 7.4,
       gh: 6,
-      image: "tank-2-1.jpg",
+      image: "", // put the same tank pic here as what i had for figma
       fish: [
         {
           fishId: 2,
