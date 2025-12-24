@@ -47,7 +47,7 @@ const user2 = {
       temperature: 80,
       ph: 7.4,
       gh: 6,
-      image: "tank-2-1.jpg",
+      image: "../../public/tank-2-1.jpg",
       fish: [
         {
           fishId: 2,
