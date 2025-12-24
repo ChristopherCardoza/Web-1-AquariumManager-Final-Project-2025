@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Tank</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="create-tank.css" type="text/css" />
+    <script type="module" defer src="create-tank.js"></script>
+  </head>
+  <body>
+    <div class="create-tank-container">
+      <div class="create-tank-card glass-card">
+        <h1 class="page-title">Create Tank</h1>
+
+        <div class="tank-form-layout">
+          <!-- Left Panel: Tank Details -->
+          <div class="tank-details-panel">
+            <!-- Tank Image Upload -->
+            <div class="tank-image-section">
+              <label for="tank-image-upload" class="tank-image-upload-label">
+                <img
+                  id="tank-image-preview"
+                  class="tank-image-preview"
+                  src=""
+                  alt="Tank Image"
+                  style="display: none"
+                />
+                <div class="tank-image-placeholder">
+                  <span class="upload-icon">+</span>
+                  <span class="upload-text">tank image</span>
+                </div>
+                <input
+                  type="file"
+                  id="tank-image-upload"
+                  name="tankImage"
+                  accept="image/*"
+                  style="display: none"
+                />
+              </label>
+            </div>
+
+  </body>
+</html>
